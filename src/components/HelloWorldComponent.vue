@@ -1,11 +1,12 @@
-<template lang="">
+<template lang="html">
     <div>
-        <h1>Hello world</h1>
+        <h1>{{ title }}</h1>
     </div>
 </template>
 <script>
 export default {
-    name: "HelloworldcomponentC"
+    name: "HelloworldcomponentC",
+    props: ["title"]
 }
 </script>
 <style lang="">

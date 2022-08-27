@@ -1,18 +1,17 @@
 <template lang="html">
     <div class="card">
         <div class="card-heard">
-            <h1>Card Header</h1>
+            <h1>{{ title }}</h1>
         </div>
         <div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti quisquam cum libero? In dolores ad
-                similique ipsam minus consectetur unde ea repudiandae modi. Ipsum veniam esse assumenda molestias
-                excepturi sint.</p>
+            <p>{{ description }}</p>
         </div>
     </div>
 </template>
+
 <script>
 export default {
-
+    props: ["title", "description"]
 }
 </script>
 <style lang="css">
