@@ -1,45 +1,37 @@
 <template lang="html">
-  <HelloWorldComponent :title="title" />
-  <CardComponent title="Header 1"
-    description="Lorem cupidatat eiusmod laborum fugiat irure aute ad consectetur." />
-  <!-- <CardComponent title="Header 2"
-    description="Adipisicing quis officia Lorem culpa culpa cillum laborum proident occaecat veniam anim." />
-  <CardComponent title="Header 3"
-    description="Lorem excepteur ullamco est culpa mollit aliqua sit irure aute cupidatat elit ea sunt officia." />
-  <CardComponent title="Header 4"
-    description="Consectetur deserunt dolore eiusmod reprehenderit amet minim reprehenderit aute." />
-  <CardComponent title="Header 5"
-    description="Do incididunt elit laborum excepteur." />
-  <CardComponent title="New Header 1"
-    description="Est consectetur mollit deserunt ad." /> -->
-  <LayoutComponentVue>
+  <div>
+    <p>{{ isSwitchedOn ? "💡" : "Switched Off" }} </p>
+    <button @click="changeSwitch">{{ isSwitchedOn ? "Switch off" : "Switched on" }}</button>
 
-    <CardComponent title="Header 1"
-      description="Lorem cupidatat eiusmod laborum fugiat irure aute ad consectetur." />
-    <template v-slot:afterFooter>
-      <p>&copy; Maestro</p>
-    </template>
+    <div>
+      <p>{{ myName }}</p>
+      <input type="text"
+        @keyup="logToConsole">
+    </div>
 
-  </LayoutComponentVue>
+  </div>
 
 </template>
 
 <script lang="js">
-import HelloWorldComponent from './components/HelloWorldComponent.vue';
-import CardComponent from './components/CardComponent.vue';
-import LayoutComponentVue from './components/LayoutComponent.vue';
-
 
 export default {
   name: 'App',
   components: {
-    HelloWorldComponent,
-    CardComponent,
-    LayoutComponentVue
+
   },
   data() {
     return {
-      title: "VueJS Lesson 4"
+      myName: "",
+      isSwitchedOn: false
+    }
+  },
+  methods: {
+    changeSwitch() {
+      this.isSwitchedOn = !this.isSwitchedOn
+    },
+    logToConsole(e) {
+      this.myName = e.target.value
     }
   }
 }
