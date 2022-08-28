@@ -1,7 +1,9 @@
 <template lang="html">
   <DefaultLayout>
     <p>Welcome to Homepage</p>
-
+    <font-awesome-icon icon="fa-solid fa-user-secret" />
+    <font-awesome-icon icon="fa-solid fa-user" />
+    <font-awesome-icon icon="fa-solid fa-cart-shopping" />
   </DefaultLayout>
 
 </template>
