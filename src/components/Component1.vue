@@ -1,6 +1,6 @@
 <template lang="html">
     <div>
-        <p>{{ title }}</p>
+        <p :class="$style.text">{{ title }}</p>
     </div>
 </template>
 <script>
@@ -8,11 +8,15 @@ export default {
     name: "Component1Vue",
     data() {
         return {
-            title: "Component 1"
+            title: "Component 1",
+            color: "white"
         }
     }
 }
 </script>
-<style lang="">
-    
+<style  module>
+.text {
+    color: v-bind(color);
+    font-size: 40px;
+}
 </style>

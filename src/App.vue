@@ -40,9 +40,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-
-input.custom_style {
-  padding: 20px;
-
-}
 </style>
