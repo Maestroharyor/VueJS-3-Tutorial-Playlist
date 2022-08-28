@@ -1,13 +1,20 @@
 <template lang="html">
   <DefaultLayout>
-    <div class="flex flex-col gap-5 justify-center items-center py-20">
-      <h3 class="text-4xl font-bold text-green-600">TO do list</h3>
-      <p class="text-3xl cursor-pointer"
-        :style="{ color: active ? activeColor : nonActiveColor }"
-        @click="toggleActive">Learn VueJS</p>
+    <div class="p-10 flex flex-col gap-5 items-center justify-center">
+      <p class="text-3xl">Welcome to {{ name }}</p>
+
+      <input type="number"
+        class="text-2xl p-5 border rounded"
+        v-model.number="name">
+
+
+
+      <button @click="changeName"
+        class="bg-green-500 text-white px-8 py-2 rounded hover:bg-green-600 transition">Change Name</button>
+
     </div>
 
-    {{ active }}
+
   </DefaultLayout>
 
 </template>
@@ -23,16 +30,21 @@ export default {
   },
   data() {
     return {
-      active: false,
-      activeColor: "red",
-      nonActiveColor: "green"
+      name: "12345",
     }
   },
   methods: {
-    toggleActive() {
-      this.active = !this.active
+    changeName() {
+      if (this.name.toLowerCase() === "lifetechfacts") {
+        this.name = "Maestro"
+      } else {
+        this.name = "Lifetechfacts"
+      }
 
     },
+    handleChange(e) {
+      this.name = e.target.value
+    }
   },
 
 }
