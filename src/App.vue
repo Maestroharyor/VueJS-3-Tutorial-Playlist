@@ -1,50 +1,31 @@
 <template lang="html">
   <div>
-    <p>{{ isSwitchedOn ? "💡" : "Switched Off" }} </p>
-    <button @click="changeSwitch">{{ isSwitchedOn ? "Switch off" : "Switched on" }}</button>
+    <ParentComponent>
+      <Component1 />
+      <Component2 />
+    </ParentComponent>
 
-    <div>
-      <p>{{ myName }}</p>
-      <input type="text"
-        @keyup="logToConsole"
-        ref="input">
-    </div>
-
-    <button @click="handleRef">Handle Ref</button>
 
   </div>
 
 </template>
 
 <script lang="js">
+import Component1 from './components/Component1.vue'
+import Component2 from './components/Component2.vue'
+import ParentComponent from './components/ParentComponent.vue'
 
 export default {
   name: 'App',
   components: {
-
+    Component1,
+    Component2,
+    ParentComponent
   },
   data() {
     return {
       myName: "",
       isSwitchedOn: false
-    }
-  },
-  methods: {
-    changeSwitch() {
-      this.isSwitchedOn = !this.isSwitchedOn
-    },
-    logToConsole(e) {
-      this.myName = e.target.value
-    },
-    handleRef() {
-      if (this.$refs.input.classList.contains("custom_style")) {
-        this.$refs.input.classList.remove("custom_style")
-        this.$refs.input.focus()
-
-      } else {
-        this.$refs.input.classList.add("custom_style")
-      }
-
     }
   }
 }
