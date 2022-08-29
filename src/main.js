@@ -26,4 +26,14 @@ import {
 /* add icons to the library */
 library.add(faUserSecret, faUser, faCartShopping, faSearch);
 
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
+const app = createApp(App);
+
+app.directive("focus", {
+  mounted: (el) => el.focus(),
+});
+
+app.directive("big", {
+  mounted: (el) => (el.style.fontSize = "100px"),
+});
+
+app.component("font-awesome-icon", FontAwesomeIcon).mount("#app");
