@@ -1,4 +1,4 @@
-# myvueapp
+# foodmood
 
 ## Project setup
 ```
