@@ -1,8 +1,9 @@
-<template>
+<template lang="html">
   <nav>
     <router-link :to="{ name: 'home' }">Home</router-link> |
     <router-link :to="{ name: 'about' }">About</router-link> |
-    <router-link :to="{ name: 'contact' }">Contact</router-link>
+    <router-link :to="{ name: 'contact' }">Contact</router-link> |
+    <router-link :to="{ name: 'recipes' }">Recipes</router-link>
   </nav>
   <router-view />
 </template>
