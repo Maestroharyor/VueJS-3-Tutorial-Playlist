@@ -44,6 +44,20 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/RecipeDetailView.vue"),
     props: true,
   },
+  {
+    path: "/all-recipes",
+    redirect: "/recipes",
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "notFound",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/404View.vue"),
+    props: true,
+  },
 ];
 
 const router = createRouter({
