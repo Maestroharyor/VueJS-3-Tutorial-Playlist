@@ -1,72 +1,41 @@
 <template>
   <div class="home">
 
-    <p>{{ninjaTwo.name}}</p>
-    <p ref="para">{{ninjaTwo.rank}}</p>
-    <p>{{test1}} - {{test2}}</p>
-    <div>
-      <button @click="changeTest">Update test variables</button>
-    </div>
     <input type="text"
       v-model="search">
-    <button @click="handleClickTwo">Click me</button>
+
+    <div>
+      <ul>
+        <li v-for="ninja in computedNinjas"
+          :key="ninja">{{ninja}}</li>
+      </ul>
+    </div>
+    <TestComponent :title="search" />
   </div>
 </template>
 
-<script>
-import { ref, reactive } from 'vue';
+<script setup>
+import { ref, computed, watch, watchEffect, onMounted, onUpdated } from 'vue';
+import TestComponent from '@/components/TestComponent.vue';
+
+console.log("Setup ran");
+let search = ref("");
+const ninjas = ref(["neji", "naruto", "sasuke", "sakura", "anko", "asuma", "boruto", "choji", "ebisu", "hanabi", "himawari"]);
+const computedNinjas = computed(() => {
+  return ninjas.value.filter(ninja => ninja.includes(search.value));
+});
+watch(search, () => {
+  console.log(`The value of search is ${search.value}`);
+});
+watchEffect(() => {
+  console.log("Wactch effect active", search.value);
+});
+onMounted(() => {
+  console.log("Now mounted");
+});
+onUpdated(() => {
+  console.log("Now updated");
+});
 
 
-
-export default {
-  name: 'HomeView',
-  setup() {
-    console.log("Setup runs")
-
-    let ninjaOne = ref({ name: "naruto", rank: "genin" });
-    let ninjaTwo = reactive({ name: "kakashi", rank: "jounin" });
-
-    let test1 = ref("VueJS")
-    let test2 = reactive("ReactJS")
-
-    let search = ref("")
-
-    let para = ref(null)
-
-    console.log(para.value)
-
-    const handleClickOne = () => {
-      ninjaOne.value.name = "sasuke"
-      ninjaOne.value.rank = "chunin"
-      console.log(search.value)
-      // if (para.value.classList.contains("testing")) {
-      //   para.value.classList.remove("testing")
-      // } else {
-      //   para.value.classList.add("testing")
-      // }
-
-    }
-    const handleClickTwo = () => {
-      ninjaTwo.name = "Madara"
-      ninjaTwo.rank = "hokage"
-    }
-
-    const changeTest = () => {
-      test1.value = "NuxtJS"
-      test2 = "NextJS"
-    }
-
-
-    return {
-      ninjaOne, handleClickOne, para, search, ninjaTwo, handleClickTwo, test1, test2, changeTest
-    }
-  },
-  // updated() {
-  //   console.log(this.search)
-  // },
-  mounted() {
-    console.log("Component mounted")
-  }
-
-}
 </script>
