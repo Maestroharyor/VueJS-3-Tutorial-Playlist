@@ -3,8 +3,10 @@
     <h3 class="mx-auto text-center px-5 text-4xl md:text-5xl mb-10 font-bold">
       Featured Recipes
     </h3>
+    <Loader v-if="loading" />
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-[1100px] mx-auto pt-8"
+      v-if="!loading && recipes.length"
     >
       <RecipeCard
         v-for="(item, index) in recipes"
@@ -25,10 +27,29 @@
 </template>
 <script setup>
 // Components
+import axios from "axios";
+import { ref } from "vue";
 import RecipeCard from "../cards/RecipeCard.vue";
+import Loader from "../elements/Loader.vue";
 
-// Data
-import recipesData from "../../data/recipes.json";
-let recipes = recipesData.meals;
+let recipes = ref([]);
+let loading = ref(false);
+
+const getFeaturedRecipes = () => {
+  loading.value = true;
+
+  axios
+    .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+    .then((response) => {
+      recipes.value = response.data.meals.splice(0, 3);
+      loading.value = false;
+    })
+    .catch((error) => {
+      console.log(error);
+      loading.value = false;
+    });
+};
+
+getFeaturedRecipes();
 </script>
 <style lang=""></style>

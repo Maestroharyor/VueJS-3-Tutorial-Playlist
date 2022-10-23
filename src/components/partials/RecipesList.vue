@@ -3,15 +3,16 @@
     <div
       class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center gap-5"
     >
+      <Loader v-if="loading" />
       <div class="flex-1">
         <h3 class="text-5xl font-bold mb-4">Recipes For you</h3>
         <p class="text-lg">
           Loading Recipes from:
           <router-link
-            :to="{ name: 'recipesCategories', params: { name: 'category-1' } }"
+            :to="{ name: 'recipesCategories', params: { name: 'seafood' } }"
             class="bg-white text-green-600 border border-green-600 hover:border-green-700 px-5 py-1.5 rounded-full text-sm transition duration-300 ease-in-out"
           >
-            Category 1
+            Seafood
           </router-link>
         </p>
       </div>
@@ -41,6 +42,7 @@
     </div>
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-16 gap-y-20 max-w-[1100px] mx-auto pt-16"
+      v-if="!loading && recipes.length"
     >
       <RecipeCard
         v-for="(item, index) in recipes"
@@ -52,10 +54,29 @@
 </template>
 <script setup>
 // Components
+import axios from "axios";
+import { ref } from "vue";
 import RecipeCard from "../cards/RecipeCard.vue";
+import Loader from "../elements/Loader.vue";
 
-// Data
-import recipesData from "../../data/recipes.json";
-let recipes = recipesData.meals;
+let recipes = ref([]);
+let loading = ref(false);
+
+const getFeaturedRecipes = () => {
+  loading.value = true;
+
+  axios
+    .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+    .then((response) => {
+      recipes.value = response.data.meals.splice(0, 3);
+      loading.value = false;
+    })
+    .catch((error) => {
+      console.log(error);
+      loading.value = false;
+    });
+};
+
+getFeaturedRecipes();
 </script>
 <style lang=""></style>

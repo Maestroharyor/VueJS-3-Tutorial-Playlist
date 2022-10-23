@@ -2,16 +2,132 @@
   <div class="bg-white py-20 px-5 border-t">
     <div
       class="grid grid-cols-1 md:grid-cols-2 max-w-[1000px] mx-auto items-start gap-10"
+      v-if="!loading && mealDetails !== null"
     >
       <div class="">
-        <h3 class="text-4xl font-bold mb-6">Meal Detail</h3>
+        <h3 class="text-4xl font-bold mb-6">{{ mealDetails.strMeal }}</h3>
         <div class="flex flex-col gap-3 mb-10">
           <h6 class="font-bold text-xl">Ingredients:</h6>
           <div class="flex flex-wrap gap-x-5 gap-y-5">
             <p
               class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient1"
             >
-              Ingredient 1
+              {{ mealDetails.strIngredient1 }} - {{ mealDetails.strMeasure1 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient2"
+            >
+              {{ mealDetails.strIngredient2 }} - {{ mealDetails.strMeasure2 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient3"
+            >
+              {{ mealDetails.strIngredient3 }} - {{ mealDetails.strMeasure3 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient4"
+            >
+              {{ mealDetails.strIngredient4 }} - {{ mealDetails.strMeasure4 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient5"
+            >
+              {{ mealDetails.strIngredient5 }} - {{ mealDetails.strMeasure5 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient6"
+            >
+              {{ mealDetails.strIngredient6 }} - {{ mealDetails.strMeasure6 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient7"
+            >
+              {{ mealDetails.strIngredient7 }} - {{ mealDetails.strMeasure7 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient8"
+            >
+              {{ mealDetails.strIngredient8 }} - {{ mealDetails.strMeasure8 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient9"
+            >
+              {{ mealDetails.strIngredient9 }} - {{ mealDetails.strMeasure9 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient10"
+            >
+              {{ mealDetails.strIngredient10 }} - {{ mealDetails.strMeasure10 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient11"
+            >
+              {{ mealDetails.strIngredient11 }} - {{ mealDetails.strMeasure11 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient12"
+            >
+              {{ mealDetails.strIngredient12 }} - {{ mealDetails.strMeasure12 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient13"
+            >
+              {{ mealDetails.strIngredient13 }} - {{ mealDetails.strMeasure13 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient14"
+            >
+              {{ mealDetails.strIngredient14 }} - {{ mealDetails.strMeasure14 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient15"
+            >
+              {{ mealDetails.strIngredient15 }} - {{ mealDetails.strMeasure15 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient16"
+            >
+              {{ mealDetails.strIngredient16 }} - {{ mealDetails.strMeasure16 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient17"
+            >
+              {{ mealDetails.strIngredient17 }} - {{ mealDetails.strMeasure17 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient18"
+            >
+              {{ mealDetails.strIngredient18 }} - {{ mealDetails.strMeasure18 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient19"
+            >
+              {{ mealDetails.strIngredient19 }} - {{ mealDetails.strMeasure19 }}
+            </p>
+            <p
+              class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
+              v-if="mealDetails.strIngredient20"
+            >
+              {{ mealDetails.strIngredient20 }} - {{ mealDetails.strMeasure20 }}
             </p>
           </div>
         </div>
@@ -22,26 +138,18 @@
           >
             Instructions:
           </p>
-          <p class="text-lg">
-            Non mollit nisi excepteur fugiat veniam ea tempor proident
-            exercitation adipisicing proident commodo mollit commodo. Deserunt
-            aute voluptate quis pariatur ullamco incididunt dolor ea pariatur
-            culpa enim excepteur id qui. Duis incididunt veniam veniam veniam et
-            dolor duis labore minim ullamco aliqua tempor aliqua sunt. Consequat
-            ipsum elit laborum laborum minim ex anim ex ut labore aute irure. Et
-            occaecat magna aute dolor. Ut culpa commodo tempor veniam aute ut.
-          </p>
+          <p class="text-lg" v-html="mealDetails.strInstructions"></p>
         </div>
         <p class="mt-5 font-bold">Category:</p>
         <div class="mb-10 flex flex-wrap gap-5 mt-3">
           <router-link
             :to="{
               name: 'recipesCategories',
-              params: { name: 'category-1' },
+              params: { name: mealDetails.strCategory },
             }"
             class="bg-white text-green-600 border border-green-600 hover:border-green-700 px-5 py-1.5 rounded-full text-sm transition duration-300 ease-in-out"
           >
-            Category 1
+            {{ mealDetails.strCategory }}
           </router-link>
         </div>
 
@@ -50,16 +158,18 @@
           <p
             :to="{
               name: 'recipesCategories',
-              params: { name: 'tag-1' },
+              params: { name: item.toLowerCase() },
             }"
             class="text-white bg-green-600 border border-green-600 px-5 py-1.5 rounded-full text-sm"
+            v-for="(item, index) in mealDetails.strTags.split(',')"
+            :key="index"
           >
-            Tag 1
+            {{ item }}
           </p>
         </div>
 
         <a
-          href="https://youtube.com"
+          :href="mealDetails.strYoutube"
           target="_blank"
           class="py-2 px-5 rounded bg-red-600 hover:bg-red-700 transition duration-300 ease-in-out inline-flex items-center gap-5 text-white mt-5"
         >
@@ -70,7 +180,7 @@
       </div>
       <div class="sticky top-8">
         <img
-          src="../../assets/foods/chicken-g754ef9688_640.jpg"
+          :src="mealDetails?.strMealThumb"
           alt=""
           srcset=""
           class="rounded-tl shadow-[20px_20px_0px_2px_rgba(21,128,61,0.95)] border-4 border-gray-200 hover:border-[#F5F6F7] hover:rounded hover:shadow-[0px_0px_0px_10px_rgba(21,128,61,0.95)] transition duration-400 cursor-pointer hover:scale-95"
@@ -85,14 +195,53 @@
           <p
             class="bg-green-600 text-white w-fit px-5 py-1.5 rounded-full text-sm"
           >
-            Area
+            {{ mealDetails.strArea }}
           </p>
         </div>
       </div>
     </div>
   </div>
+  <Loader v-if="loading" />
 </template>
-<script>
-export default {};
+<script setup>
+import axios from "axios";
+import { ref } from "vue";
+import { useRoute, onBeforeRouteUpdate } from "vue-router";
+import Loader from "../elements/Loader.vue";
+
+const route = useRoute();
+let mealDetails = ref(null);
+let loading = ref(false);
+
+const getRecipeDetail = () => {
+  loading.value = true;
+
+  axios
+    .get(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${route.params.id}`
+    )
+    .then((response) => {
+      console.log(response.data);
+      loading.value = false;
+
+      if (response.data.meals && response.data.meals !== null) {
+        mealDetails.value = response.data.meals[0];
+      } else {
+        console.log("Invalid ID");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      loading.value = false;
+    });
+};
+
+getRecipeDetail();
+
+onBeforeRouteUpdate(async (to, from) => {
+  if (to.params.id !== from.params.id) {
+    getRecipeDetail();
+  }
+});
 </script>
 <style lang=""></style>
