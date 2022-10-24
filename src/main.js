@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import store from "./store";
 import router from "./router";
 
 // Fonts
@@ -33,6 +34,7 @@ library.add(faSearch, faCircleNotch, faPlay, faBars, faClose);
 import "./assets/global.css";
 
 createApp(App)
-  .component("font-awesome-icon", FontAwesomeIcon)
+  .use(store)
   .use(router)
+  .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");
