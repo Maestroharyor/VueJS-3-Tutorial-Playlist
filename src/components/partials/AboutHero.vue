@@ -59,10 +59,11 @@
         </div>
     </div>
 </template>
-<script>
-export default {
+<script setup>
+import { useStore } from 'vuex';
+const store = useStore()
 
-}
+console.log(store.state)
 </script>
 <style lang="">
     

@@ -1,6 +1,5 @@
 <template lang="">
-  <Loader v-if="loading" />
-  <div class="bg-[#F5F6F7] py-20 px-5" v-if="!loading && categoryInfo !== null">
+  <div class="bg-[#F5F6F7] py-20 px-5" v-if="categoryInfo !== null">
     <h3 class="mx-auto text-center px-5 text-4xl md:text-5xl mb-10 font-bold">
       Viewing {{ categoryInfo.strCategory }}
       <span>😁</span>
@@ -18,19 +17,6 @@
             {{ categoryInfo.strCategoryDescription }}
           </p>
         </div>
-
-        <!-- <p class="mt-3 font-bold">Tags:</p>
-        <div class="mb-10 flex flex-wrap gap-5 mt-3">
-          <p
-            :to="{
-              name: 'recipesCategories',
-              params: { name: 'category-1' },
-            }"
-            class="text-white bg-green-600 border border-green-600 px-5 py-1.5 rounded-full text-sm"
-          >
-            Tag 1
-          </p>
-        </div> -->
       </div>
       <div class="flex-1">
         <img
@@ -45,33 +31,20 @@
 </template>
 <script setup>
 import axios from "axios";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import Loader from "../elements/Loader.vue";
 
+const store = useStore();
 const route = useRoute();
-let categoryInfo = ref(null);
-let loading = ref(false);
+let categoryInfo = computed(
+  () =>
+    store.state.categories.filter(
+      (category) =>
+        category.strCategory.toLowerCase() === route.params.name.toLowerCase()
+    )[0]
+);
 
-const getCategoryInfo = () => {
-  loading.value = true;
-
-  axios
-    .get("https://www.themealdb.com/api/json/v1/1/categories.php")
-    .then((response) => {
-      console.log(response.data);
-      let currentCategory = response.data.categories.filter(
-        (category) => category.strCategory.toLowerCase() === route.params.name
-      );
-      categoryInfo.value = currentCategory[0];
-      loading.value = false;
-    })
-    .catch((error) => {
-      console.log(error);
-      loading.value = false;
-    });
-};
-
-getCategoryInfo();
+console.log(categoryInfo.value);
 </script>
 <style lang=""></style>

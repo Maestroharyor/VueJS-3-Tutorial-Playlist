@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import store from "./store";
 import router from "./router";
+import store from "./store";
 
 // Fonts
 import "@fontsource/koho/200.css";
@@ -34,7 +34,7 @@ library.add(faSearch, faCircleNotch, faPlay, faBars, faClose);
 import "./assets/global.css";
 
 createApp(App)
-  .use(store)
+.use(store)
   .use(router)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

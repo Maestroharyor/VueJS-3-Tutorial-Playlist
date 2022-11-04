@@ -11,8 +11,17 @@ export default createStore({
     currentRecipesList: [],
   },
   getters: {
-    getCategoryDetails(state, strCategory) {
+    getCategoryDetails(state) {
       return state.categories;
+    },
+    getSelectedCategory(state) {
+      return state.selectedCategory.strCategory;
+    },
+    getCurrentCategory(state, catName) {
+      return state.categories.filter(
+        (category) =>
+          category.strCategory.toLowerCase() === catName.toLowerCase()
+      )[0];
     },
   },
   mutations: {
@@ -34,5 +43,4 @@ export default createStore({
     },
   },
   actions: {},
-  modules: {},
 });

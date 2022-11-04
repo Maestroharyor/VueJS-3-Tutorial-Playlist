@@ -153,8 +153,11 @@
           </router-link>
         </div>
 
-        <p class="mt-3 font-bold">Tags:</p>
-        <div class="mb-10 flex flex-wrap gap-5 mt-3">
+        <div
+          class="mb-10 flex flex-wrap gap-5 mt-3"
+          v-if="mealDetails.strTags !== null"
+        >
+          <p class="mt-3 font-bold">Tags:</p>
           <p
             :to="{
               name: 'recipesCategories',
