@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
+// Functions and data
+import { Capitalize } from "../functions/utils";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -66,6 +69,34 @@ const router = createRouter({
         import(/* webpackChunkName: "about" */ "../views/ContactView.vue"),
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  // console.log(to);
+
+  switch (to.name) {
+    case "recipesDetails":
+      const routerParamsId = to.params.id;
+      const routerParamsArr = routerParamsId.split("-");
+
+      document.title = `${Capitalize(
+        routerParamsArr.slice(0, routerParamsArr.length - 1).join(" ")
+      )} Recipe - Foodmood`;
+
+      break;
+    case "recipesCategories":
+      document.title = `${Capitalize(
+        to.params.name
+      )} Recipe Category - Foodmood`;
+
+      break;
+
+    default:
+      document.title = `${Capitalize(to.name)} - Foodmood`;
+      break;
+  }
+
+  next();
 });
 
 export default router;
