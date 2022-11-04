@@ -40,7 +40,11 @@
         <router-link
           :to="{
             name: 'recipesDetails',
-            params: { id: store.state.recipeOfTheDay.idMeal },
+            params: {
+              id: `${store.state.recipeOfTheDay.strMeal.split(' ').join('-')}-${
+                store.state.recipeOfTheDay.idMeal
+              }`,
+            },
           }"
           class="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out"
         >
