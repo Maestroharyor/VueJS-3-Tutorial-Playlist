@@ -209,28 +209,35 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
-import { useRoute, onBeforeRouteUpdate } from "vue-router";
+import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import Loader from "../elements/Loader.vue";
 
 const route = useRoute();
+const router = useRouter();
 let mealDetails = ref(null);
 let loading = ref(false);
 
-const getRecipeDetail = () => {
+const getRouteID = (routeID) => {
+  const mealIDArray = routeID.split("-");
+  const mealID = mealIDArray[mealIDArray.length - 1];
+  return mealID;
+};
+
+const getRecipeDetail = (id) => {
   loading.value = true;
 
   axios
     .get(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${route.params.id}`
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${getRouteID(id)}`
     )
     .then((response) => {
       console.log(response.data);
       loading.value = false;
 
-      if (response.data.meals && response.data.meals !== null) {
+      if (response.data.meals) {
         mealDetails.value = response.data.meals[0];
       } else {
-        console.log("Invalid ID");
+        router.push("/404");
       }
     })
     .catch((error) => {
@@ -239,12 +246,11 @@ const getRecipeDetail = () => {
     });
 };
 
-getRecipeDetail();
+getRecipeDetail(route.params.id);
 
 onBeforeRouteUpdate(async (to, from) => {
-  if (to.params.id !== from.params.id) {
-    getRecipeDetail();
+  if (getRouteID(to.params.id) !== getRouteID(from.params.id)) {
+    getRecipeDetail(to.params.id);
   }
 });
 </script>
-<style lang=""></style>

@@ -1,17 +1,15 @@
 <template>
-
-    <MainHeader />
-    <slot></slot>
-    <Footer />
-
+  <MainHeader />
+  <MobileHeader />
+  <slot></slot>
+  <Footer />
 </template>
 <script>
-import MainHeader from '../headers/MainHeader.vue';
-import Footer from '../footers/Footer.vue';
+import MainHeader from "../headers/MainHeader.vue";
+import MobileHeader from "../headers/MobileHeader.vue";
+import Footer from "../footers/Footer.vue";
 export default {
-    components: { MainHeader, Footer }
-}
+  components: { MainHeader, MobileHeader, Footer },
+};
 </script>
-<style lang="">
-    
-</style>
+<style lang=""></style>

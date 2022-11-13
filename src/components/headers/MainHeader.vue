@@ -74,7 +74,7 @@
               :to="{
                 name: 'recipesDetails',
                 params: {
-                  id: `${item.idMeal}`,
+                  id: `${item.strMeal.split(' ').join('-')}-${item.idMeal}`,
                 },
               }"
               class="pt-3 hover:text-green-700"
